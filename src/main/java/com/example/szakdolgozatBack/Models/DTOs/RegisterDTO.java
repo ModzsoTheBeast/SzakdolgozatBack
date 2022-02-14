@@ -1,4 +1,4 @@
-package Models.DTOs;
+package com.example.szakdolgozatBack.Models.DTOs;
 
 public class RegisterDTO {
 

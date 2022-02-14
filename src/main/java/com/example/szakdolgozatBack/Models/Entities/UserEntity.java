@@ -1,13 +1,14 @@
-package Models.Entities;
+package com.example.szakdolgozatBack.Models.Entities;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "USER")
+@Entity
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "USER_ID")
     private Long id;
 
     @Column(name="USER_NAME", length=50, nullable=false, unique=true)
