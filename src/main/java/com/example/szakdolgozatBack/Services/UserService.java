@@ -1,7 +1,6 @@
 package com.example.szakdolgozatBack.Services;
 
 import com.example.szakdolgozatBack.Interfaces.UserServiceInterface;
-import com.example.szakdolgozatBack.Models.DTOs.LoginDTO;
 import com.example.szakdolgozatBack.Models.DTOs.RegisterDTO;
 import com.example.szakdolgozatBack.Models.Entities.UserEntity;
 import com.example.szakdolgozatBack.Models.Repositories.UserRepository;
@@ -25,7 +24,6 @@ public class UserService implements UserServiceInterface {
 
     @Transactional
     public void register(RegisterDTO registerDTO){
-        System.out.println("asd");
         UserEntity user = new UserEntity();
         user.setUser_name(registerDTO.getUser_name());
         user.setEmail(registerDTO.getEmail());

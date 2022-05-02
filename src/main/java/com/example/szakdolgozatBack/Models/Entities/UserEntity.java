@@ -14,7 +14,7 @@ public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "USER_ID")
-    private Long id;
+    private Long user_id;
 
     @Column(name="USER_NAME", length=50, nullable=false, unique=true)
     private String user_name;
@@ -28,12 +28,55 @@ public class UserEntity implements UserDetails {
     @Column(name="FULL_NAME", length=100, nullable=false, unique=false)
     private String full_name;
 
+    @OneToMany(mappedBy = "user")
+    private Set<ProjectEntity> project;
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public Set<ProjectEntity> getProject() {
+        return project;
+    }
+
+    public void setProject(Set<ProjectEntity> project) {
+        this.project = project;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        isAccountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        isCredentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public Set<? extends GrantedAuthority> getGrantedAuthorities() {
+        return grantedAuthorities;
+    }
+
+    public void setGrantedAuthorities(Set<? extends GrantedAuthority> grantedAuthorities) {
+        this.grantedAuthorities = grantedAuthorities;
+    }
+
     public Long getId() {
-        return id;
+        return user_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.user_id = id;
     }
 
     public String getUser_name() {
@@ -58,28 +101,28 @@ public class UserEntity implements UserDetails {
         return getUser_name();
     }
 
-    @Column(name="IS_ACCOUNT_NON_EXPIRED", columnDefinition="default 'true'")
+    @Column(name="IS_ACCOUNT_NON_EXPIRED")
     private boolean isAccountNonExpired;
     @Override
     public boolean isAccountNonExpired() {
         return isAccountNonExpired;
     }
 
-    @Column(name="IS_ACCOUNT_NON_LOCKED", columnDefinition="default 'true'")
+    @Column(name="IS_ACCOUNT_NON_LOCKED")
     private boolean isAccountNonLocked;
     @Override
     public boolean isAccountNonLocked() {
         return isAccountNonLocked;
     }
 
-    @Column(name="IS_CREDENTIALS_NON_EXPIRED", columnDefinition="default 'true'")
+    @Column(name="IS_CREDENTIALS_NON_EXPIRED")
     private boolean isCredentialsNonExpired;
     @Override
     public boolean isCredentialsNonExpired() {
         return isCredentialsNonExpired;
     }
 
-    @Column(name="IS_ENABLED", columnDefinition="default 'true'")
+    @Column(name="IS_ENABLED")
     private boolean isEnabled;
     @Override
     public boolean isEnabled() {
@@ -109,7 +152,7 @@ public class UserEntity implements UserDetails {
         return full_name;
     }
 
-    public void setFull_name(String full_name) {
+    public void setFirstname(String full_name) {
         this.full_name = full_name;
     }
 
