@@ -1,0 +1,156 @@
+###
+##create user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "userName" : "patrikmokus",
+  "lastName" : "Lőkös",
+  "firstName" : "Patrik",
+  "password" : "Pikacsu9",
+  "userEmail" : "partikmokus@citromail.com"
+}
+
+###
+## user update
+PUT http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "userName": "fridakral",
+  "id": 1
+}
+
+
+###
+## find user by username
+GET http://localhost:8080/api/users/asd
+Accept: application/json
+
+
+
+###
+##create project
+POST http://localhost:8080/api/project
+Content-Type: application/json
+
+{
+  "projectName":"közös teendők",
+  "userId": 1
+
+}
+
+
+
+###
+## find all project by user id
+GET http://localhost:8080/api/project/findAllByUserId/1
+Accept: application/json
+
+
+
+###
+##fing role by userid and projectid
+GET http://localhost:8080/api/role
+Content-Type: application/json
+
+{
+  "userId" : 1,
+  "projectId": 2
+}
+
+###
+##change role -> PRODUCT_OWNER, SCRUM_MASTER, DEVELOPER, TESTER, SUPPORT, ETC
+PUT http://localhost:8080/api/role
+Content-Type: application/json
+
+{
+  "userId" : 1,
+  "projectId": 2,
+  "role": "DEVELOPER"
+}
+
+
+###
+## create list
+POST http://localhost:8080/api/list
+Content-Type: application/json
+
+{
+  "projectId": 5,
+  "listName": "todo",
+  "position": 0
+}
+
+
+###
+##move list
+PUT http://localhost:8080/api/list/move
+Content-Type: application/json
+
+{
+  "projectId": 2,
+  "startPosition": 0,
+  "endPosition": 3
+}
+
+
+###
+##create task
+POST http://localhost:8080/api/task
+Content-Type: application/json
+
+{
+  "taskName": "asdasd",
+  "positionInList": 2,
+  "listId": 13
+
+}
+
+###
+##update task -> levels:     TRIVIAL, MINOR, MEDIUM, MAJOR, CRITICAL, BLOCKER
+PUT http://localhost:8080/api/task
+Content-Type: application/json
+
+{
+  "taskId": 19,
+  "taskName": "Szakirodalom",
+  "deadline": "",
+  "taskDescription": "Java, Spring",
+  "level": "MEDIUM"
+}
+
+###
+##find lists and tasks vy project id
+GET http://localhost:8080/api/list/findByProject/2
+Accept: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
